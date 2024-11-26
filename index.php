@@ -38,7 +38,7 @@
     
     <div class="nav">
         <a href="views/client/list.php">Manage Clients</a>
-        <a href="/views/region/list.php">View Regions</a>
+        <a href="views/region/list.php">View Regions</a>
     </div>
 </body>
 </html>
