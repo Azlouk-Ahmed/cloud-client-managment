@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($isAdded) {
         header('Location: list.php');
-        echo 'aded';
+        exit();
     } else {
         echo "Error adding client.";
     }
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <h1>Add Client</h1>
+    <h1>Add Client updated</h1>
     <form action="add.php?action=addClient" method="POST">
         <div class="df">
 
