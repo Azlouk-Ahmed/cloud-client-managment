@@ -35,13 +35,6 @@ echo "PHP is working in add.php";
 
 
 
-        <?php
-        // Assuming $regionController has been passed to this view and contains a method to fetch regions
-        $regions = $regionController->listRegions();
-        while ($region = $regions->fetch(PDO::FETCH_ASSOC)) {
-            echo "<option value='" . $region['ID_region'] . "'>" . $region['libelle'] . "</option>";
-        }
-        ?>
     </select>
 
     <button type="submit">Ajouter</button>
