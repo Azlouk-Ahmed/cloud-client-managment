@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($isAdded) {
         header('Location: list.php');
-        exit();
+        echo 'aded';
     } else {
         echo "Error adding client.";
     }
