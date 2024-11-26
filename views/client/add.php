@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <h1>Add Client updated</h1>
-    <form action="add.php?action=addClient" method="POST">
+    <h1>Add Client updated1</h1>
+    <form action="add.php" method="POST">
         <div class="df">
 
             <label for="nom">Nom:</label>
