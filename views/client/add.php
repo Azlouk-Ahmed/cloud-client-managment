@@ -8,7 +8,7 @@ $regions = $regionController->listRegions();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $clientController = new ClientController();
     $isAdded = $clientController->addClient($_POST);
-
+ 
     if ($isAdded) {
         header('Location: list.php');
         exit();
@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html>
+    
 <head>
     <title>Add Client</title>
     <link rel="stylesheet" href="../../public/styles/index.css">
