@@ -1,6 +1,9 @@
 <?php
-echo "PHP is working in add.php";
+require_once '../../controllers/ClientController.php';
+
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +38,7 @@ echo "PHP is working in add.php";
 
 
 
+        <option value='1'>sdfsd</option>
     </select>
 
     <button type="submit">Ajouter</button>
