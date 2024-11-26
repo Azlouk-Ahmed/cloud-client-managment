@@ -1,5 +1,4 @@
 <?php
-require_once '../../controllers/RegionController.php';
 require_once '../../controllers/ClientController.php';
 
 
@@ -50,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-        <option value="1">sdfsf</option>
+        <option value="1">rrr</option>
     </select>
 
     <button type="submit">Ajouter</button>
