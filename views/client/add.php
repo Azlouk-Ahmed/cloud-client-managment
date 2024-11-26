@@ -1,5 +1,6 @@
 <?php
-require_once '../../controllers/RegionController.php';
+echo "testtttt";
+/*require_once '../../controllers/RegionController.php';
 require_once '../../controllers/ClientController.php';
 
 $regionController = new RegionController();
@@ -15,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Error adding client.";
     }
-}
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <h1>Add Client</h1>
-    <form action="add.php?action=addClient" method="POST">
+<!--    <form action="add.php?action=addClient" method="POST">
         <div class="df">
 
             <label for="nom">Nom:</label>
@@ -52,17 +53,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-        <?php
+        <?php/*
         // Assuming $regionController has been passed to this view and contains a method to fetch regions
         $regions = $regionController->listRegions();
         while ($region = $regions->fetch(PDO::FETCH_ASSOC)) {
             echo "<option value='" . $region['ID_region'] . "'>" . $region['libelle'] . "</option>";
-        }
+        }*/
         ?>
     </select>
 
     <button type="submit">Ajouter</button>
-</form>
+</form>-->
 
 
     <br>
