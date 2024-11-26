@@ -1,7 +1,19 @@
 <?php
+require_once '../../controllers/RegionController.php';
 require_once '../../controllers/ClientController.php';
 
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $clientController = new ClientController();
+    $isAdded = $clientController->addClient($_POST);
+
+    if ($isAdded) {
+        header('Location: list.php');
+        exit();
+    } else {
+        echo "Error adding client.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +50,7 @@ require_once '../../controllers/ClientController.php';
 
 
 
-        <option value='1'>sdfsd</option>
+        <option value="1">sdfsf</option>
     </select>
 
     <button type="submit">Ajouter</button>
