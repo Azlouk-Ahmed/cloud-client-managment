@@ -1,18 +1,16 @@
 <?php
-require_once '../../controllers/ClientController.php';
+
+$host = "tcp:mini-projet.database.windows.net,1433";
+$db_name = "societe";
+$username = "ahmed";
+$password = "azerty123@";
+$conn = new PDO("sqlsrv:server=$host;Database=$db_name;Encrypt=true;TrustServerCertificate=false", $username, $password);
 
 if (isset($_GET['id'])) {
-    $clientController = new ClientController();
-    $isDeleted = $clientController->deleteClient($_GET['id']);
-
-    if ($isDeleted) {
-        header('Location: list.php');
-        exit();
-    } else {
-        echo "Error deleting client.";
-    }
-} else {
+    $id = $_GET['id'];
+    $query = "DELETE FROM client WHERE ID_client = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->execute([$id]);
     header('Location: list.php');
     exit();
 }
-?>

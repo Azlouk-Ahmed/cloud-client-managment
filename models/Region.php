@@ -10,7 +10,7 @@ class Region {
     }
 
     public function getAllRegions() {
-        $query = "SELECT * FROM " . $this->table_name;
+        $query = "SELECT * FROM  " . $this->table_name;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

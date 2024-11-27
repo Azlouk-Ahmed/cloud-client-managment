@@ -8,7 +8,7 @@ class RegionController {
     public function __construct() {
         $database = new Database();
         $db = $database->getConnection();
-        $this->region = new Region($db);  // Pass the database connection
+        $this->region = new Region($db);  
     }
 
     public function listRegions() {

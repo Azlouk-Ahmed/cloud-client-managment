@@ -1,10 +1,15 @@
 <?php
-require_once '../../controllers/RegionController.php';
+$host = "tcp:mini-projet.database.windows.net,1433";
+$db_name = "societe";
+$username = "ahmed";
+$password = "azerty123@";
+$conn = new PDO("sqlsrv:server=$host;Database=$db_name;Encrypt=true;TrustServerCertificate=false", $username, $password);
 
-$regionController = new RegionController();
-$regions = $regionController->listRegions();
+
+$query = "SELECT ID_region, libelle FROM region";
+$stmt = $conn->query($query);
+$regions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +20,7 @@ $regions = $regionController->listRegions();
 </head>
 <body>
     <h1>Region List</h1>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <th>ID</th>
@@ -23,12 +28,12 @@ $regions = $regionController->listRegions();
             </tr>
         </thead>
         <tbody>
-            <?php while ($region = $regions->fetch(PDO::FETCH_ASSOC)) { ?>
+            <?php foreach ($regions as $region): ?>
                 <tr>
                     <td><?= $region['ID_region']; ?></td>
                     <td><?= $region['libelle']; ?></td>
                 </tr>
-            <?php } ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
     <br>

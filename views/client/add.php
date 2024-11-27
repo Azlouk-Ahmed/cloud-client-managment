@@ -1,11 +1,11 @@
 <?php
-// Database connection settings
+
 $host = "tcp:mini-projet.database.windows.net,1433";
 $db_name = "societe";
 $username = "ahmed";
 $password = "azerty123@";
 
-// Connect to the database
+
 try {
     $conn = new PDO(
         "sqlsrv:server=" . $host . ";Database=" . $db_name . ";Encrypt=true;TrustServerCertificate=false",
@@ -18,15 +18,15 @@ try {
     die();
 }
 
-// Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
+    
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $age = $_POST['age'];
     $ID_region = $_POST['ID_region'];
 
-    // Insert data into the database
+    
     $query = "INSERT INTO client (nom, prenom, age, ID_region) VALUES (:nom, :prenom, :age, :ID_region)";
     $stmt = $conn->prepare($query);
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':age' => $age,
             ':ID_region' => $ID_region
         ]);
-        // Redirect to the list page after successful insertion
+        
         header('Location: list.php');
         exit();
     } catch (PDOException $e) {

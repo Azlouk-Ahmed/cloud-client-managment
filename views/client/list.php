@@ -1,20 +1,36 @@
 <?php
-// Include the necessary controllers or models
-require_once '../../controllers/ClientController.php';
 
-// Create an instance of the ClientController
-$clientController = new ClientController();
+$host = "tcp:mini-projet.database.windows.net,1433";
+$db_name = "societe";
+$username = "ahmed";
+$password = "azerty123@";
+$conn = new PDO("sqlsrv:server=$host;Database=$db_name;Encrypt=true;TrustServerCertificate=false", $username, $password);
 
-// Initialize variables
+
 $clients = [];
 $searchQuery = "";
 
-// Check if a search term is provided
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
-    $searchQuery = trim($_GET['search']);
-    $clients = $clientController->searchClientsByName($searchQuery); // Fetch clients filtered by name
+
+if (isset($_GET['search'])) {
+    
+    $searchQuery = "%" . $_GET['search'] . "%"; 
+    $sql = "SELECT c.ID_client, c.nom, c.prenom, c.age, r.libelle AS region 
+            FROM client c 
+            LEFT JOIN region r ON c.ID_region = r.ID_region 
+            WHERE c.nom LIKE ? OR c.prenom LIKE ?";
+    
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$searchQuery, $searchQuery]); 
+    $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
-    $clients = $clientController->listClients(); // Fetch all clients
+    
+    $sql = "SELECT c.ID_client, c.nom, c.prenom, c.age, r.libelle AS region 
+            FROM client c 
+            LEFT JOIN region r ON c.ID_region = r.ID_region";
+    
+    $stmt = $conn->query($sql);
+    $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 
@@ -27,16 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search'])) {
 <body class="df-c">
     <div class="df">
         <h1>Liste des Clients</h1>
-        <a href="add.php">add a client</a>
+        <a href="add.php">Add a client</a>
     </div>
     
     <!-- Search Form -->
     <form method="GET" class="df" action="">
-        <input type="text" name="search" value="<?= htmlspecialchars($searchQuery) ?>" placeholder="Search by name">
+        <input type="text" name="search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>" placeholder="Search by name">
         <button type="submit">Search</button>
         <a href="list.php">Clear</a> <!-- Clear search -->
     </form>
-
 
     <table border="1">
         <thead>

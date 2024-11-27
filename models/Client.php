@@ -9,7 +9,7 @@ class Client {
     }
 
     public function getAllClients() {
-        $query = "SELECT client.ID_client, client.nom, client.prenom, client.age, region.libelle AS region 
+        $query = "SELECT client.ID_client, client.nom, client.prenom, client.age,  region.libelle AS region 
                   FROM client, region 
                   WHERE client.ID_region = region.ID_region";
         $stmt = $this->conn->prepare($query);

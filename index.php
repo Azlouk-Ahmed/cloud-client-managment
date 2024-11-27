@@ -33,7 +33,7 @@
 </head>
 <body>
 
-    <h1>Welcome to the Mini Project Cloud</h1>
+    <h1>Welcome to the Mini Project Cloud !</h1>
     <p>Select one of the options below to manage data:</p>
     
     <div class="nav">
